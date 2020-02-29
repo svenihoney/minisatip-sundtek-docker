@@ -33,5 +33,5 @@ ADD entrypoint.sh /entrypoint.sh
 #RUN chmod +x /entrypoint.sh
 
 # Default container settings
-EXPOSE 8875 554 1900/udp
+EXPOSE 8080 554 1900/udp
 ENTRYPOINT ["/entrypoint.sh"]
