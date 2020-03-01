@@ -15,8 +15,6 @@ RUN apt-get update --yes \
 
 
 FROM debian:stable-slim
-WORKDIR /root/
-COPY --from=0 /minisatip/minisatip .
 
 RUN apt-get update --yes \
     && apt-get install --no-install-recommends --yes \
@@ -29,7 +27,11 @@ RUN wget http://www.sundtek.de/media/sundtek_netinst.sh \
   && ./sundtek_netinst.sh -easyvdr \
   && rm -f ./sundtek_netinst.sh
 
+WORKDIR /minisatip/
+COPY --from=0 /minisatip/minisatip .
+COPY --from=0 /minisatip/html/ html
 ADD entrypoint.sh /entrypoint.sh
+
 #RUN chmod +x /entrypoint.sh
 
 # Default container settings

@@ -10,4 +10,5 @@ while [ ! -d /dev/dvb ]; do
 done
 
 # Start minisatip
-/root/minisatip -f -x 8080 $RUN_OPTS
+cd /minisatip
+./minisatip -f -x 8080 $RUN_OPTS
